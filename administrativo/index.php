@@ -1,5 +1,22 @@
 <?php
-$path_page = "login";
+//Receber a url
+$url = filter_input(INPUT_GET, "url", FILTER_DEFAULT);
+
+//Converter a string em array
+$url_path = explode("/", $url);
+
+//Verificar se existe a posicao 1 do array
+if ((isset($url_path['0'])) and (!empty($url_path['0']))) {
+    $path_page = $url_path['0'];
+} else {
+    $path_detail = "login";
+}
+//Verificar se existe a posicao 2 do array
+if ((isset($url_path['1'])) and (!empty($url_path['1']))) {
+    $path_detail = $url_path['1'];
+} else {
+    $path_detail = "";
+}
 ?>
 
 <!DOCTYPE html>
