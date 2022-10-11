@@ -22,3 +22,9 @@ RewriteCond %{REQUEST_FILENAME} !-l
 # Exemplo: login?page=2&usuarios=ativo sera reescrita como url=login&page=2&usuarios=ativo
 # O sinalizador [L] faz mod_rewrite com que o processamento do conjunto de regras seja interrompido
 RewriteRule ^(.+)$ index.php?url=$1 [QSA]
+
+# Quando houver o erro 403 redirecionar o usuario
+# ErrorDocument 403 https://celke.com.br
+
+# Bloquear a opcao listar os arquivos do diretorio
+# Options -Indexes
