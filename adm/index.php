@@ -1,5 +1,8 @@
 <?php
 
+//Limpar o buffer
+ob_start();
+
 // Constante que define que o usuario esta acessando paginas internas atraves da pagina "index.php".
 define('C7E3L8K9E5', true);
 
@@ -22,17 +25,17 @@ $url_path = explode("/", $url_clean);
 // var_dump($url_path);
 
 // Verificar se existe a posicao 1 no array
-if((isset($url_path['0'])) and (!empty($url_path['0']))){
+if ((isset($url_path['0'])) and (!empty($url_path['0']))) {
     $path_page = $url_path['0'];
-}else{
+} else {
     $path_page = "login";
 }
 // var_dump($path_page);
 
 // Verificar se existe a posicao 2 no array
-if((isset($url_path['1'])) and (!empty($url_path['1']))){
+if ((isset($url_path['1'])) and (!empty($url_path['1']))) {
     $path_detail = $url_path['1'];
-}else{
+} else {
     $path_detail = "";
 }
 // var_dump($path_detail);
