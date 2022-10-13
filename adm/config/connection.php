@@ -19,7 +19,7 @@ $dbport = DBPORT;
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if ($conn) {
-    echo "Conexão realizada com sucesso<br>";
+ //   echo "Conexão realizada com sucesso<br>";
 } else {
     die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAIL . "!<br>");
 }
