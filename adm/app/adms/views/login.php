@@ -44,7 +44,7 @@ if (!empty($data['SendLogin'])) {
     if (!$empty_input) {
         // QUERY para pesquisar o usuario no banco de dados
         $username = mysqli_real_escape_string($conn, $data['username']);
-        $query_user = "SELECT id, name, email, password, adms_sits_user_id 
+        $query_user = "SELECT id, name, nickname, email, password, image, adms_sits_user_id 
                 FROM adms_users
                 WHERE email = '$username' 
                 OR username = '$username'
@@ -68,6 +68,14 @@ if (!empty($data['SendLogin'])) {
                 // Destruir os dados da variavel $data
                 unset($data);
 
+                // Criar as variaveis globais com as informacoes do usuario
+                $_SESSION['user_id'] = $row_user['id'];
+                $_SESSION['user_name'] = $row_user['name'];
+                $_SESSION['user_nickname'] = $row_user['nickname'];
+                $_SESSION['user_email'] = $row_user['email'];
+                $_SESSION['user_image'] = $row_user['image'];
+                $_SESSION['user_key'] = password_hash($row_user['id'], PASSWORD_DEFAULT);
+
                 // Criar a URL de destino
                 $url_destination = URLADM . "/dashboard";
 
@@ -81,30 +89,46 @@ if (!empty($data['SendLogin'])) {
         }
     }
 }
+
+// Verificar se existe a mensagem na sessao
+if (isset($_SESSION['msg'])) {
+    // Imprimir a mensagem
+    echo $_SESSION['msg'];
+    // Destroi a variavel global que possui a mensagem
+    unset($_SESSION['msg']);
+}
 ?>
 
+<!-- Recebe a mensagem do JavaScript -->
 <span id="msg"></span>
 
+<!-- Inicio formulario -->
 <form method="POST" action="" id="form-login">
     <?php
+    // Manter os dados no campo
     $username = "";
     if (isset($data['username'])) {
         $username = $data['username'];
     }
     ?>
     <label>Usuário</label>
+    <!-- Criar o campo usuario -->
     <input type="text" name="username" id="username" placeholder="Digite o usuário ou e-mail" value="<?php echo $username; ?>" autofocus required><br><br>
 
     <?php
+    // Manter os dados no campo
     $password = "";
     if (isset($data['password'])) {
         $password = $data['password'];
     }
     ?>
     <label>Senha</label>
+    <!-- Criar o campo senha -->
     <input type="password" name="password" id="password" placeholder="Digite a senha" value="<?php echo $password; ?>" required><br><br>
 
     <input type="submit" name="SendLogin" value="Acessar">
 </form><br>
+<!-- Fim formulario -->
+
 Usuário: cesar@celke.com.br<br>
 Senha: 123456a

@@ -1,5 +1,6 @@
 <?php
 
+session_start(); //Iniciar a sessão
 // Limpar o buffer
 ob_start();
 
