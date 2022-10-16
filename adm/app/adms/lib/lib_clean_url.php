@@ -1,13 +1,14 @@
 <?php
 
 // Redirecionar ou para o processamento quando o usuario nao acessa o arquivo index.php
-if(!defined('C7E3L8K9E5')){
+if (!defined('C7E3L8K9E5')) {
     //header("Location: /");
     die("Erro: Página não encontrada!<br>");
-} 
+}
 
 // Funcao limpar URL
-function cleanUrl($url){
+function cleanUrl($url)
+{
     // Caracteres nao aceitos
     $format_a = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
 

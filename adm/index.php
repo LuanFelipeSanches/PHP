@@ -1,6 +1,7 @@
 <?php
 
-session_start(); //Iniciar a sessão
+session_start(); // Iniciar a sessao
+
 // Limpar o buffer
 ob_start();
 
@@ -12,6 +13,9 @@ include_once "./config/config.php";
 
 // Incluir o arquivo com a conexao ao banco de dados
 include_once "./config/connection.php";
+
+// Incluir o arquivo validar acesso
+include_once "./app/adms/lib/lib_validate_access.php";
 
 // Receber a url
 $url = filter_input(INPUT_GET, "url", FILTER_DEFAULT);
@@ -40,6 +44,8 @@ if ((isset($url_path['1'])) and (!empty($url_path['1']))) {
     $path_detail = "";
 }
 // var_dump($path_detail);
+// Verificar se o usuario esta logado
+$path_page = validateAccess($path_page);
 
 ?>
 <!DOCTYPE html>

@@ -18,8 +18,9 @@ $dbport = DBPORT;
 // Conexao com o banco de dados nao utilizado a porta
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
+// Verificar a conexao com o banco de dados
 if ($conn) {
- //   echo "Conexão realizada com sucesso<br>";
+    //echo "Conexão realizada com sucesso<br>";
 } else {
     die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAIL . "!<br>");
 }
