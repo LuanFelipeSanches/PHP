@@ -98,6 +98,7 @@ if (isset($_SESSION['msg'])) {
     unset($_SESSION['msg']);
 }
 ?>
+<h1>Login</h1>
 
 <!-- Recebe a mensagem do JavaScript -->
 <span id="msg"></span>
@@ -127,8 +128,12 @@ if (isset($_SESSION['msg'])) {
     <input type="password" name="password" id="password" placeholder="Digite a senha" value="<?php echo $password; ?>" required><br><br>
 
     <input type="submit" name="SendLogin" value="Acessar">
-</form><br>
+</form>
 <!-- Fim formulario -->
+
+<p>
+    <a href="<?php echo URLADM . '/login_new_user'; ?>">Cadastrar</a> - <a href="<?php echo URLADM . '/login_recover_password'; ?>">Esqueceu a senha</a>
+</p>
 
 Usuário: cesar@celke.com.br<br>
 Senha: 123456a

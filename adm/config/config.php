@@ -6,6 +6,9 @@ if (!defined('C7E3L8K9E5')) {
     die("Erro: Página não encontrada!<br>");
 }
 
+//Definir um fuso horario padrao
+date_default_timezone_set('America/Campo_Grande');
+
 //True - Apresentar a mensagem de alerta com o erro
 //False - Nao apresentar a mensagem de alerta com o erro
 ini_set('display_errors', true);

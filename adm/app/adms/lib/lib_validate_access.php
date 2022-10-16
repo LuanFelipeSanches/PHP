@@ -10,7 +10,7 @@ if (!defined('C7E3L8K9E5')) {
 function validateAccess($path_page)
 {
     // Criar o array de paginas publicas
-    $page_public = ["login", "sair", "404"];
+    $page_public = ["login", "sair", "404","login_new_user"];
 
     // Criar o array de paginas restritas
     $page_restricted = ["dashboard"];
