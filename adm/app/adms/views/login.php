@@ -38,6 +38,9 @@ if (!empty($data['SendLogin'])) {
         } else {
             // echo "<p style='color: #f00'>Erro: Usuário ou senha inválida!</p>";
 
+            //Destruir os dados da variavel $data
+            unset($data);
+
             //Criar a URL de destino
             $url_destination = URLADM . "/dashboard";
 
@@ -51,10 +54,27 @@ if (!empty($data['SendLogin'])) {
 ?>
 
 <form method="POST" action="">
+    <?php
+    $username = "";
+    if (isset($data['username'])) {
+
+        $username = $data['username'];
+    }
+
+    ?>
     <label>Usuário</label>
-    <input type="text" name="usurname" placeholder="Digite o usuário ou e-mail" autofocus required><br><br>
+    <input type="text" name="usurname" placeholder="Digite o usuário ou e-mail" value="<?php echo $username ?>" autofocus ><br><br>
+
+    <?php
+    $password = "";
+    if (isset($data['password'])) {
+
+        $password = $data['password'];
+    }
+
+    ?>
     <label>Senha</label>
-    <input type="password" name="password" placeholder="Digite a senha" required><br><br>
+    <input type="password" name="password" placeholder="Digite a senha" value="<?php echo $password ?>" ><br><br>
 
     <input type="submit" name="SendLogin" value="Acessar">
 </form>
