@@ -26,12 +26,13 @@ if (!empty($data['AddNewUser'])) {
     $query_user = "INSERT INTO adms_users (name, email, username, password, created) VALUES ('$name', '$email', '$email', '$password_encrypted', NOW())";
     mysqli_query($conn, $query_user);
 
-    if (mysqli_insert_id($conn)) {
+    if(mysqli_insert_id($conn)){
         $msg = "<p style='color: green;'>Cadastrado realizado com sucesso!</p>";
         unset($data);
-    } else {
+    }else{
         $msg = "<p style='color: #f00;'>Erro: Cadastrado não realizado com sucesso!</p>";
     }
+    
 }
 ?>
 
@@ -40,7 +41,7 @@ if (!empty($data['AddNewUser'])) {
 <span id="msg"></span>
 
 <?php
-if (!empty($msg)) {
+if(!empty($msg)){
     echo $msg;
     unset($msg);
 }
@@ -57,7 +58,7 @@ if (!empty($msg)) {
     ?>
     <label>Usuário</label>
     <!-- Criar o campo nome usuario -->
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php echo $name; ?>" autofocus><br><br>
+    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php echo $name; ?>" autofocus ><br><br>
 
     <?php
     // Manter os dados no campo
@@ -68,7 +69,7 @@ if (!empty($msg)) {
     ?>
     <label>E-mail</label>
     <!-- Criar o campo email -->
-    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email; ?>"><br><br>
+    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email; ?>" ><br><br>
 
     <?php
     // Manter os dados no campo
@@ -79,7 +80,9 @@ if (!empty($msg)) {
     ?>
     <label>Senha</label>
     <!-- Criar o campo senha -->
-    <input type="password" name="password" id="password" placeholder="Digite a senha" value="<?php echo $password; ?>"><br><br>
+    <input type="password" name="password" id="password" placeholder="Digite a senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password; ?>" >
+
+    <span id="msgViewStrength"><br><br></span>
 
     <input type="submit" name="AddNewUser" value="Cadastrar">
 </form>

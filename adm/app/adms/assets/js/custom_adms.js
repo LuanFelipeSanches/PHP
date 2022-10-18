@@ -3,6 +3,60 @@ if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
 
+// Calcular a forca da senha
+function passwordStrength() {
+    // Variavel para receber a forca da senha
+    var strength = 0;
+
+    // Receber o valor do campo senha
+    var password = document.getElementById("password").value;
+
+    // Atribuir a forca da senha conforme a quantidade de caracteres que o usuario digitar
+    if ((password.length >= 6) && (password.length <= 7)) {
+        strength += 10;
+    } else if (password.length > 7) {
+        strength += 25;
+    }
+
+    // Verificar se o usuario digitou letra minuscula
+    if ((password.length >= 6) && (password.match(/[a-z]+/))) {
+        strength += 10;
+    }
+
+    // Verificar se o usuario digitou letra maiscula
+    if ((password.length >= 7) && (password.match(/[A-Z]+/))) {
+        strength += 20;
+    }
+
+    // Verificar se o usuario digitou caracter especial
+    if ((password.length >= 8) && (password.match(/[@#$%;*]+/))) {
+        strength += 25;
+    }
+
+    // Verificar se o usuario digitou numero sequencia, reduzir a forca da senha
+    if (password.match(/([1-9]+)\1{1,}/)) {
+        strength -= 25;
+    }
+
+    // Chamar a funcao apresentar a forca da denha
+    viewStrength(strength);
+}
+
+// Funcao apresentar a forca da denha
+function viewStrength(strength) {
+    if (strength < 30) {
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color: #d2322d;'>Senha Fraca</p>";
+    } else if ((strength >= 30) && (strength < 50)) {
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color: #ed9c28;'>Senha Média</p>";
+    } else if ((strength >= 50) && (strength < 70)) {
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color: #0088cc;'>Senha Boa</p>";
+    } else if (strength >= 70) {
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color: #47a447;'>Senha Forte</p>";
+    } else {
+        ocument.getElementById("msgViewStrength").innerHTML = "";
+    }
+}
+
 // Receber o formulario login
 const formLogin = document.getElementById("form-login");
 
