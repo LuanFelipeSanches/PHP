@@ -1,3 +1,8 @@
+// Permitir retorno no navegador no formulario apos o erro
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+
 // Receber o formulario login
 const formLogin = document.getElementById("form-login");
 
